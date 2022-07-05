@@ -1,5 +1,5 @@
-version: 2.1
 
+version: 2.1
 jobs:
   build:
     docker:
@@ -7,7 +7,8 @@ jobs:
     steps:
       - checkout
       - run: npm i
-      - run: npm run lint    
+      - run: npm run lint
+      
   test:
     docker:
       - image: circleci/node:13.8.0
@@ -15,12 +16,15 @@ jobs:
        - checkout
        - run: npm i
        - run: npm run test
+
+
   analyze:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
       - run : npm audit
+
 workflows:
   my_workflow:
     jobs:
